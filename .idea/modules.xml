@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/codegenerater/codegenerater.iml" filepath="$PROJECT_DIR$/codegenerater/codegenerater.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/demos.iml" filepath="$PROJECT_DIR$/.idea/demos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rules/rules.iml" filepath="$PROJECT_DIR$/rules/rules.iml" />
       <module fileurl="file://$PROJECT_DIR$/springcache-with-redis/springcache-with-redis.iml" filepath="$PROJECT_DIR$/springcache-with-redis/springcache-with-redis.iml" />
     </modules>
   </component>

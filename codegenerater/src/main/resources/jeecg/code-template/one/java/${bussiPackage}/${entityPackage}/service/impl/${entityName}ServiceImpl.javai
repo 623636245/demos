@@ -1,0 +1,70 @@
+package ${bussiPackage}.${entityPackage}.service.impl;
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//
+//         .............................................
+//                  佛祖镇楼           BUG辟易
+//
+//                             佛曰:
+//
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+import ${bussiPackage}.wechatcommon.result.Result;
+import ${bussiPackage}.wechatcommon.result.ResultGenerator;
+import ${bussiPackage}.${entityPackage}.entity.${entityName};
+import ${bussiPackage}.${entityPackage}.mapper.${entityName}Mapper;
+import ${bussiPackage}.${entityPackage}.service.I${entityName}Service;
+import org.springframework.stereotype.Service;
+import ${bussiPackage}.wechatcommon.utils.MyUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
+
+/**
+ * @package: ${bussiPackage}.${entityPackage}.service.impl
+ * @description: ${tableVo.ftlDescription}服务实现层
+ * @author: LuBangTao
+ * @create: ${.now?string["yyyy-MM-dd HH:mm"]}
+ **/
+@Service
+@Slf4j
+@Transactional
+public class ${entityName}ServiceImpl extends ServiceImpl<${entityName}Mapper, ${entityName}> implements I${entityName}Service {
+    @Override
+    public Result<?> handleAdd(${entityName} ${entityName?uncap_first}) {
+        ${entityName} info =  MyUtil.copyPropertiesIgnoreCase(${entityName?uncap_first},${entityName}.class);
+        try {
+            this.save(info);
+        }catch (Exception e){
+            log.error("保存${tableVo.ftlDescription}数据出错：",e);
+            e.printStackTrace();
+            //事务回滚
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+        }
+        return ResultGenerator.genSuccessMessage(${entityName?uncap_first});
+    }
+}

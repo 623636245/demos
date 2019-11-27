@@ -41,7 +41,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @package: cn.lannis.demo.springcachewithredis.controller
  * @program: demos
  * @description: 缓存测试
- * @author: LuBangtao
+ * @author: LuBangTao
  * @create: 2019-11-12 17:02
  **/
 @RequestMapping("/cache")

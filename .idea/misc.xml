@@ -7,6 +7,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/springcache-with-redis/pom.xml" />
+        <option value="$PROJECT_DIR$/codegenerater/pom.xml" />
+        <option value="$PROJECT_DIR$/rules/pom.xml" />
       </list>
     </option>
   </component>

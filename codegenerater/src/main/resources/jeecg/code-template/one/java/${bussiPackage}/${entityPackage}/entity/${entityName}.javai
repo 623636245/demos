@@ -1,0 +1,70 @@
+package ${bussiPackage}.${entityPackage}.entity;
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//
+//         .............................................
+//                  佛祖镇楼           BUG辟易
+//
+//                             佛曰:
+//
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+import java.io.Serializable;
+import java.util.Date;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+/**
+ * @package: ${bussiPackage}.${entityPackage}.entity
+ * @description: ${tableVo.ftlDescription}
+ * @author： LuBangTao
+ * @create： ${.now?string["yyyy-MM-dd HH:mm"]}
+ */
+@Data
+@TableName("${tableName}")
+public class ${entityName} implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
+    <#list originalColumns as po>
+	/**${po.filedComment}*/
+	<#if po.fieldName == tableId>
+	@TableId(type = IdType.UUID)
+	</#if>
+  <#if po.fieldType =='java.util.Date'>
+	<#if po.fieldDbType =='date'>
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+	<#elseif po.fieldDbType =='datetime'>
+	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	</#if>
+  </#if>
+	private <#if po.fieldType=='java.sql.Blob'>byte[]<#else>${po.fieldType}</#if> ${po.fieldName};
+	</#list>
+}
